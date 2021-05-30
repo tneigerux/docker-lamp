@@ -5,24 +5,27 @@ This docker contain a LAMP stack installed from scratch
 ## Installation
 ### Grab from docker hub
 ```
-docker run -d -v /path/to/project:/var/www/localhost/htdocs/ -v /path/to/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=password -p 80:80 -p 3306:3306 --name lamp j1cs/alpine-lamp
+docker pull iopenservices/docker-lamp
 ```
 
 ### Run you own image
-
 ```  
-git clone https://github.com/j1cs/alpine-lamp && cd alpine-lamp/
+git clone https://github.com/tneigerux/docker-lamp && cd docker-lamp/
 ```
 
 ### Build the image
 ```
-docker build -t $USER/alpine-lamp .
+docker build -t iopenservices/docker-lamp .
 ```
 
 ### Run it
 
+Set DOCROOT-PATH equal to /path/to/public_html (no trailing slash)
+
+e.g. ```/Users/iopen/Development/example-com/public/```
+
 ```
-docker run -d -v /path/to/project:/var/www/localhost/htdocs/ -e MYSQL_ROOT_PASSWORD=password -p 80:80 -p 3306:3306 --name lamp $USER/alpine-lamp
+docker run -d -v <DOCROOT-PATH>:/var/www/localhost/htdocs/ -e MYSQL_ROOT_PASSWORD=password -p 80:80 -p 3306:3306 --name www-example-local iopenservices/docker-lamp
 ```
 
 ### Connect to MariaDB
