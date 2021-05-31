@@ -1,5 +1,5 @@
 FROM alpine:3.11
-ENV TIMEZONE America/Santiago
+ENV TIMEZONE America/New_York
 RUN apk update && apk upgrade
 RUN apk add mariadb mariadb-client \
     apache2 \ 
